@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">WhatsAppclolne</string>
+    <string name="digite_email">Digite seu e-mail</string>
+    <string name="digite_senha">Digite sua senha</string>
+    <string name="btn_entrar">Entrar</string>
+    <string name="naotem_conta">Não tem conta, criar uma?</string>
+    <string name="adicionar_email">Entre com seu e-mail</string>
+    <string name="digite_nome">Nome de usuário</string>
+    <string name="digite_cadastro_senha">Digite sua senha</string>
+</resources>
