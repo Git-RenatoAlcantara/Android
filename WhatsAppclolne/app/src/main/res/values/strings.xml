@@ -7,4 +7,7 @@
     <string name="adicionar_email">Entre com seu e-mail</string>
     <string name="digite_nome">Nome de usuário</string>
     <string name="digite_cadastro_senha">Digite sua senha</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

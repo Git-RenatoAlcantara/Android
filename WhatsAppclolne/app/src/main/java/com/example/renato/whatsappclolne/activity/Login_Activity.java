@@ -1,5 +1,6 @@
 package com.example.renato.whatsappclolne.activity;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
@@ -17,6 +18,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseUser;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 
 public class Login_Activity extends AppCompatActivity {
     private TextInputEditText editEmail, editSenha;
@@ -28,6 +32,8 @@ public class Login_Activity extends AppCompatActivity {
 
         editEmail = findViewById(R.id.editLoginEmail);
         editSenha = findViewById(R.id.editLoginSenha);
+
+        autenticacao = ConfiguracaoFirebase.getfireBaseAutenticacao();
 
     }
     public void validarUsuario(View view){
@@ -50,10 +56,7 @@ public class Login_Activity extends AppCompatActivity {
             Toast.makeText(Login_Activity.this, "Preencha o email", Toast.LENGTH_SHORT).show();
         }
     }
-    public void cadastrarUsuario(View view){
-        Intent intent = new Intent(this, Cadastro_Activity.class);
-        startActivity(intent);
-    }
+
 
     public void logarUsuario(Usuario usuario){
 
@@ -85,9 +88,23 @@ public class Login_Activity extends AppCompatActivity {
 
     }
 
+    public void cadastrarUsuario(View view){
+        Intent intent = new Intent(this, Cadastro_Activity.class);
+        startActivity(intent);
+    }
+
     public void abrirTelaPrincipal(){
         Intent intent = new Intent(new Intent(Login_Activity.this, MainActivity.class));
         startActivity(intent);
+    }
+
+    public void onStart() {
+
+        super.onStart();
+        FirebaseUser usuarioAtual = autenticacao.getCurrentUser();
+        if (usuarioAtual != null){
+            abrirTelaPrincipal();
+        }
     }
 
 }
