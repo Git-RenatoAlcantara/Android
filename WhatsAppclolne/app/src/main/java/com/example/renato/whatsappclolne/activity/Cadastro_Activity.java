@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.renato.whatsappclolne.R;
 import com.example.renato.whatsappclolne.config.ConfiguracaoFirebase;
+import com.example.renato.whatsappclolne.helper.Base64Custom;
 import com.example.renato.whatsappclolne.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -39,7 +40,7 @@ public class Cadastro_Activity extends AppCompatActivity {
 
 
     }
-    public void cadastrarUsuario(Usuario usuario){
+    public void cadastrarUsuario(final Usuario usuario){
 
         //Pegando instacia autenticacao
         auticacao = ConfiguracaoFirebase.getfireBaseAutenticacao();
@@ -52,8 +53,21 @@ public class Cadastro_Activity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 //Verificando se o cadastro foi realizado sem erro
                 if (task.isSuccessful()){
+
                     Toast.makeText(Cadastro_Activity.this, "Usuario cadastrado", Toast.LENGTH_SHORT).show();
                     finish();
+
+                    //Salvando dados no firebase
+                    try{
+                        String identificadorUsuario = Base64Custom.base64encode(usuario.getEmail());
+                        usuario.setIdusuario(identificadorUsuario);
+                        usuario.salvar();
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+
                 }else{
                     String excecao = "";
                     try{

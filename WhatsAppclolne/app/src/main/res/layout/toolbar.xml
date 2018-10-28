@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#1b5b6d"
-        android:theme="@style/AlertDialog.AppCompat"
-        app:titleTextColor="@android:color/white" />
+        app:titleTextColor="@android:color/white"
+        app:titleTextAppearance="@android:color/white"
+        />
 </FrameLayout>

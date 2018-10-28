@@ -1,5 +1,6 @@
 package com.example.renato.whatsappclolne.activity;
 
+import android.content.Intent;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -65,6 +66,10 @@ private FirebaseAuth autenticao;
                 deslogarUsuario();
                 finish();
                 break;
+            case R.id.menuConfiguracoes:
+                abrirConfiguracoe();
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -75,5 +80,10 @@ private FirebaseAuth autenticao;
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void abrirConfiguracoe(){
+        Intent intent = new Intent(MainActivity.this, Configuracoe_Activity.class);
+        startActivity(intent);
     }
 }
