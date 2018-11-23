@@ -9,7 +9,7 @@ public class RetrofitConfig {
 
     public  static Retrofit getRetrofit(){
         return  new Retrofit.Builder()
-                .baseUrl("http://localhost/principal/")
+                .baseUrl("http://0cdd2c3e.ngrok.io/principal/CursoEmprego/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }

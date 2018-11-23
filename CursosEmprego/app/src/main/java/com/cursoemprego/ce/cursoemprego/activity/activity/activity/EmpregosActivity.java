@@ -76,7 +76,7 @@ public class EmpregosActivity extends AppCompatActivity  {
 
 
        DadosService dadosService = retrofit.create(DadosService.class);
-       Call<EmpregosResultado> call = dadosService.recuperarDados();
+       Call<EmpregosResultado> call = dadosService.recuperarEmpregos();
 
        call.enqueue(new Callback<EmpregosResultado>() {
            @Override
@@ -112,7 +112,7 @@ public class EmpregosActivity extends AppCompatActivity  {
                             @Override
                             public void onItemClick(View view, int position) {
 
-                                final View imageView = view.findViewById(R.id.imageViewCapa);
+                                final View imageView = view.findViewById(R.id.imageViewListCapa);
                                 Intent intent = new Intent(EmpregosActivity.this, Post_Conteudo_Activity.class);
                                 ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(EmpregosActivity.this,
                                         imageView, ViewCompat.getTransitionName(imageView));

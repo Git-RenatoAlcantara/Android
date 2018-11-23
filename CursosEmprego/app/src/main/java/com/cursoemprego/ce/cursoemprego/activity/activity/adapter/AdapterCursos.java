@@ -9,19 +9,25 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.cursoemprego.ce.cursoemprego.R;
 import com.cursoemprego.ce.cursoemprego.activity.activity.model.EmpregosResultado;
+import com.cursoemprego.ce.cursoemprego.activity.activity.model.InformaticaResultado;
+import com.cursoemprego.ce.cursoemprego.activity.activity.model.ListaResultado;
+import com.cursoemprego.ce.cursoemprego.activity.activity.model.framework.Framework;
+import com.squareup.picasso.Picasso;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterEmpregos extends RecyclerView.Adapter<AdapterEmpregos.MyViewHolder> {
-    private List<EmpregosResultado> listaEmpregos;
-    private Context context;
+public class AdapterCursos extends RecyclerView.Adapter<AdapterCursos.MyViewHolder> {
+    private List<Framework> informaticaResultados;
+    private Context contexto;
 
-    public AdapterEmpregos(List<EmpregosResultado> listaEmpregos, Context context) {
-
-        this.listaEmpregos = listaEmpregos;
-        this.context = context;
+    public AdapterCursos(List<Framework> informaticaResultados, Context contexto) {
+        this.informaticaResultados = informaticaResultados;
+        this.contexto = contexto;
     }
 
     @NonNull
@@ -29,21 +35,25 @@ public class AdapterEmpregos extends RecyclerView.Adapter<AdapterEmpregos.MyView
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_list_conteudo, parent, false);
 
-        return new AdapterEmpregos.MyViewHolder(view);
+        return new AdapterCursos.MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-       EmpregosResultado resultado = listaEmpregos.get(position);
+        Framework  framework = informaticaResultados.get(position);
+         holder.titulo.setText(framework.titulo);
+        String url = framework.imagem;
 
-        holder.titulo.setText(resultado.getText());
-        holder.capa.setImageResource(resultado.getImagem());
+        Glide.with(contexto)
+                .load(url) // image url
+                .into(holder.capa);
     }
 
     @Override
     public int getItemCount() {
-        return listaEmpregos.size();
+        return informaticaResultados.size();
     }
+
 
     class MyViewHolder extends RecyclerView.ViewHolder{
         TextView titulo;
@@ -55,6 +65,4 @@ public class AdapterEmpregos extends RecyclerView.Adapter<AdapterEmpregos.MyView
             capa = itemView.findViewById(R.id.imageViewListCapa);
         }
     }
-
-
 }

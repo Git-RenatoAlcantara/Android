@@ -10,12 +10,11 @@
     android:padding="10dp">
 
     <ImageView
-        android:id="@+id/imageViewCapa"
+        android:id="@+id/imageViewListCapa"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:scaleType="centerCrop"
-        android:transitionName="exemple_transition"
-        tools:srcCompat="@drawable/post1" />
+        android:transitionName="exemple_transition" />
 
     <TextView
         android:id="@+id/textTitulo"
