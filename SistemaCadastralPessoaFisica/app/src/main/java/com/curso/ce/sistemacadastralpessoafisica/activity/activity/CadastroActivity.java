@@ -16,9 +16,18 @@ import java.util.List;
 public class CadastroActivity extends AppCompatActivity {
 
     private EditText campoNome, campoCpf, campoIdade, campoTelefone, campoEmail;
+
+
+    //Variavel de instacia sqlite
     private SQLiteDatabase bancoDados;
+
+    //Variavel de instancia classe Pessoa
     private Pessoa pessoa;
+
+    //Lista de objetos Pessoa
     private List<Pessoa> listaPessoa = new ArrayList<>();
+
+    //Variavel contadora
     private int contador = 0;
 
     @Override
@@ -26,14 +35,20 @@ public class CadastroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
+
+        //Chamando metodo para iniciar componentes
         inicializarComponentes();
 
 
     }
 
+    //Metodo responsavel pela  persistência
     public void salvarDados(View view){
 
+        //Instanciando objto pessoa
         pessoa = new Pessoa();
+
+        //Setando valores aos atributos da classe
         pessoa.setNome(campoNome.getText().toString());
         pessoa.setCpf(campoCpf.getText().toString());
         pessoa.setIdade(campoIdade.getText().toString());
@@ -51,12 +66,12 @@ public class CadastroActivity extends AppCompatActivity {
             bancoDados.execSQL("CREATE TABLE IF NOT EXISTS pessoas (nome VARCHAR, cpf INT(11), idade INT(2), telefone INT(11), email VARCHAR)");
 
 
-            //bancoDados.execSQL("DROP TABLE pessoas");
 
 
             //Inserir dados
             bancoDados.execSQL("INSERT INTO pessoas (nome, cpf, idade, telefone, email) VALUES ('"+pessoa.getNome()+"', '"+pessoa.getCpf()+"', '"+pessoa.getIdade()+"', '"+pessoa.getTelefone()+"', '"+pessoa.getEmail()+"')");
 
+            //Chamando metodo para limbar campo
             limparCampos();
 
 
@@ -70,9 +85,16 @@ public class CadastroActivity extends AppCompatActivity {
 
     }
 
+    //Recupera dados do banco
     public void recuperarDados(View view){
+
+        //Chamando metodo para limpar os campos
         limparCampos();
+
+        //Zerando listapessoa
         listaPessoa.clear();
+
+
        try{
 
           //Abrir banco de dados
@@ -87,14 +109,17 @@ public class CadastroActivity extends AppCompatActivity {
            //percorre coluna enquanto diferente de vazio
            while (cursor != null) {
 
-
+               //Instanciando objeto pessoa
                pessoa = new Pessoa();
+
+               //Setando valores aos atributos da classe pesso com o retorno do banco
                pessoa.setNome(cursor.getString(0));
                pessoa.setCpf( cursor.getString(1));
                pessoa.setIdade(cursor.getString(2));
                pessoa.setTelefone(cursor.getString(3));
                pessoa.setEmail(cursor.getString(4));
 
+               //Adicionando pessoa a lista
                listaPessoa.add(pessoa);
 
 
@@ -111,34 +136,43 @@ public class CadastroActivity extends AppCompatActivity {
 
        }
 
+        //Chamando metodo que preenche os campos da activity com os valores
         listarDados();
 
     }
 
+    //Metodo para preencher os campos com os dados do banco
     private void listarDados(){
 
+        //zera o contador ao chegar no fim da lista
         if (contador >= listaPessoa.size()){
+
             contador = 0;
+
         }
 
-        System.out.println(listaPessoa.size());
+        //Setando os valores
         campoNome.setText(listaPessoa.get(contador).getNome());
         campoCpf.setText(listaPessoa.get(contador).getCpf());
         campoIdade.setText(listaPessoa.get(contador).getIdade());
         campoTelefone.setText(listaPessoa.get(contador).getTelefone());
         campoEmail.setText(listaPessoa.get(contador).getEmail());
+
+        //Incrementa variavel contador
         contador++;
-        
+
 
     }
 
+    //Metodo botao voltar para a primeira activity
     public void botaoVoltar(View view){
 
+        //Encerra activity
         finish();
 
     }
 
-
+    //Metodo para limpar campo
     private void limparCampos(){
        campoNome.setText("");
        campoCpf.setText("");
@@ -147,6 +181,7 @@ public class CadastroActivity extends AppCompatActivity {
        campoEmail.setText("");
     }
 
+    //Carrar valores da activity
     private void inicializarComponentes(){
 
         campoNome = findViewById(R.id.editTextNome);

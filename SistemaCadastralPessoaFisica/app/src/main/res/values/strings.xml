@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SistemaCadastralPessoaFisica</string>
+    <string name="app_name">Pessoa Fisica</string>
     <string name="textCpf">CPF</string>
     <string name="textNome">Nome</string>
     <string name="textIdade">Idade</string>
@@ -8,4 +8,5 @@
     <string name="btnInseriDadosCadastro">Inserir Dados</string>
     <string name="btnListarRegistrosCadastro">Listar Registros</string>
     <string name="btnVoltarCadastro">Voltar</string>
+    <string name="btnCadastrarPrincipal">Cadastrar</string>
 </resources>
