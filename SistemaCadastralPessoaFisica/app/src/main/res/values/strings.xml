@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SistemaCadastralPessoaFisica</string>
+    <string name="textCpf">CPF</string>
+    <string name="textNome">Nome</string>
+    <string name="textIdade">Idade</string>
+    <string name="textTelefone">Telefone</string>
+    <string name="textEmail">E-mail</string>
+    <string name="btnInseriDadosCadastro">Inserir Dados</string>
+    <string name="btnListarRegistrosCadastro">Listar Registros</string>
+    <string name="btnVoltarCadastro">Voltar</string>
+</resources>
