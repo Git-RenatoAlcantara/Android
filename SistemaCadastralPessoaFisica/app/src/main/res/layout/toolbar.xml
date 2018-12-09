@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@+id/toolbar_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<android.support.v7.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimary"
+   app:titleTextColor="@color/colorCadastroBg"
+    />
+
+    <com.miguelcatalan.materialsearchview.MaterialSearchView
+        android:id="@+id/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/setaVoltar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:drawableStart="@drawable/ic_arrow_left_24dp"
+        android:onClick="voltar"
+        android:paddingLeft="10dp"
+        android:textSize="24sp" />
+</FrameLayout>

@@ -5,8 +5,9 @@
     <string name="textIdade">Idade</string>
     <string name="textTelefone">Telefone</string>
     <string name="textEmail">E-mail</string>
-    <string name="btnInseriDadosCadastro">Inserir Dados</string>
-    <string name="btnListarRegistrosCadastro">Listar Registros</string>
+    <string name="btnInseriDadosCadastro">Cadastrar</string>
+    <string name="btnListarRegistrosCadastro">Registros</string>
     <string name="btnVoltarCadastro">Voltar</string>
     <string name="btnCadastrarPrincipal">Cadastrar</string>
+    <string name="btnAbrirLista">Exibir Cadastros</string>
 </resources>

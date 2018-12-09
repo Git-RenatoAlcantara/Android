@@ -1,4 +1,7 @@
-package com.curso.ce.sistemacadastralpessoafisica.activity.activity;
+package com.curso.ce.sistemacadastralpessoafisica.activity.activity.modal;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Pessoa {
    private String nome;
@@ -6,6 +9,26 @@ public class Pessoa {
    private String idade;
    private String telefone;
    private String email;
+   private String id;
+   List<String> dadosPessoa = new ArrayList<>();
+
+    public List<String> getDadosPessoa() {
+        dadosPessoa.add(getId());
+        dadosPessoa.add(getNome());
+        dadosPessoa.add(getCpf());
+        dadosPessoa.add(getIdade());
+        dadosPessoa.add(getTelefone());
+        dadosPessoa.add(getEmail());
+        return dadosPessoa;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;

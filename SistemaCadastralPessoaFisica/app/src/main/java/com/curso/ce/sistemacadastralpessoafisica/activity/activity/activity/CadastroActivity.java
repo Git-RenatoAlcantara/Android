@@ -1,14 +1,16 @@
-package com.curso.ce.sistemacadastralpessoafisica.activity.activity;
+package com.curso.ce.sistemacadastralpessoafisica.activity.activity.activity;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabaseLockedException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.curso.ce.sistemacadastralpessoafisica.R;
+import com.curso.ce.sistemacadastralpessoafisica.activity.activity.modal.Pessoa;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +18,7 @@ import java.util.List;
 public class CadastroActivity extends AppCompatActivity {
 
     private EditText campoNome, campoCpf, campoIdade, campoTelefone, campoEmail;
-
+    private TextView setaVoltar;
 
     //Variavel de instacia sqlite
     private SQLiteDatabase bancoDados;
@@ -24,11 +26,9 @@ public class CadastroActivity extends AppCompatActivity {
     //Variavel de instancia classe Pessoa
     private Pessoa pessoa;
 
-    //Lista de objetos Pessoa
-    private List<Pessoa> listaPessoa = new ArrayList<>();
 
-    //Variavel contadora
-    private int contador = 0;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +41,39 @@ public class CadastroActivity extends AppCompatActivity {
 
 
     }
+    public void validarCampos(View view){
+        String nome = campoNome.getText().toString();
+        String cpf = campoCpf.getText().toString();
+        String idade = campoIdade.getText().toString();
+        String telefone = campoTelefone.getText().toString();
+        String email = campoTelefone.getText().toString();
 
+
+        if (!nome.isEmpty()) {
+            if (!cpf.isEmpty()){
+                if (!idade.isEmpty()){
+                    if (!telefone.isEmpty()){
+                        if (!email.isEmpty()){
+                            salvarDados();
+                        }else{
+                            Toast.makeText(this, "Preencha o campo email", Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        Toast.makeText(this, "Preencha o campo telefone", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(this, "Preencha o campo idade", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(this, "Preencha o campo cpf", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(this, "Preencha o campo nome", Toast.LENGTH_SHORT).show();
+        }
+
+    }
     //Metodo responsavel pela  persistência
-    public void salvarDados(View view){
+    public void salvarDados(){
 
         //Instanciando objto pessoa
         pessoa = new Pessoa();
@@ -63,8 +93,8 @@ public class CadastroActivity extends AppCompatActivity {
             bancoDados = openOrCreateDatabase("cadastro", MODE_PRIVATE, null);
 
             //Criar tabela
-            bancoDados.execSQL("CREATE TABLE IF NOT EXISTS pessoas (nome VARCHAR, cpf INT(11), idade INT(2), telefone INT(11), email VARCHAR)");
-
+            bancoDados.execSQL("CREATE TABLE IF NOT EXISTS pessoas (id INTEGER PRIMARY KEY AUTOINCREMENT, nome VARCHAR, cpf INT(11), idade INT(2), telefone INT(11), email VARCHAR)");
+            //bancoDados.execSQL("DROP TABLE pessoas");
 
 
 
@@ -85,84 +115,7 @@ public class CadastroActivity extends AppCompatActivity {
 
     }
 
-    //Recupera dados do banco
-    public void recuperarDados(View view){
 
-        //Chamando metodo para limpar os campos
-        limparCampos();
-
-        //Zerando listapessoa
-        listaPessoa.clear();
-
-
-       try{
-
-          //Abrir banco de dados
-           bancoDados = openOrCreateDatabase("cadastro", MODE_PRIVATE, null);
-
-           //Selecionando e recuperando dados da tabela
-           Cursor cursor = bancoDados.rawQuery("select * from pessoas", null);
-
-           //Iniciando o cursor indice 0
-           cursor.moveToFirst();
-
-           //percorre coluna enquanto diferente de vazio
-           while (cursor != null) {
-
-               //Instanciando objeto pessoa
-               pessoa = new Pessoa();
-
-               //Setando valores aos atributos da classe pesso com o retorno do banco
-               pessoa.setNome(cursor.getString(0));
-               pessoa.setCpf( cursor.getString(1));
-               pessoa.setIdade(cursor.getString(2));
-               pessoa.setTelefone(cursor.getString(3));
-               pessoa.setEmail(cursor.getString(4));
-
-               //Adicionando pessoa a lista
-               listaPessoa.add(pessoa);
-
-
-               //Move o cursor enquanto diferente de null
-               cursor.moveToNext();
-
-           }
-
-
-
-       }catch (Exception e){
-
-           e.printStackTrace();
-
-       }
-
-        //Chamando metodo que preenche os campos da activity com os valores
-        listarDados();
-
-    }
-
-    //Metodo para preencher os campos com os dados do banco
-    private void listarDados(){
-
-        //zera o contador ao chegar no fim da lista
-        if (contador >= listaPessoa.size()){
-
-            contador = 0;
-
-        }
-
-        //Setando os valores
-        campoNome.setText(listaPessoa.get(contador).getNome());
-        campoCpf.setText(listaPessoa.get(contador).getCpf());
-        campoIdade.setText(listaPessoa.get(contador).getIdade());
-        campoTelefone.setText(listaPessoa.get(contador).getTelefone());
-        campoEmail.setText(listaPessoa.get(contador).getEmail());
-
-        //Incrementa variavel contador
-        contador++;
-
-
-    }
 
     //Metodo botao voltar para a primeira activity
     public void botaoVoltar(View view){
@@ -189,8 +142,13 @@ public class CadastroActivity extends AppCompatActivity {
         campoIdade = findViewById(R.id.editTextIdade);
         campoTelefone = findViewById(R.id.editTextTelefone);
         campoEmail = findViewById(R.id.editTextEmail);
+        setaVoltar = findViewById(R.id.setaVoltar);
 
     }
 
+
+    public void voltar(View view){
+        finish();
+    }
 
 }

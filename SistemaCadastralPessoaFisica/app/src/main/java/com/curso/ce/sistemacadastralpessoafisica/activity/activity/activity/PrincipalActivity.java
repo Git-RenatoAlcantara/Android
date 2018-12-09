@@ -1,4 +1,4 @@
-package com.curso.ce.sistemacadastralpessoafisica.activity.activity;
+package com.curso.ce.sistemacadastralpessoafisica.activity.activity.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.curso.ce.sistemacadastralpessoafisica.R;
-import com.curso.ce.sistemacadastralpessoafisica.activity.activity.CadastroActivity;
 
 public class PrincipalActivity extends AppCompatActivity {
 
@@ -18,6 +17,11 @@ public class PrincipalActivity extends AppCompatActivity {
 
     public void abrirTelaCadastro(View view){
         startActivity(new Intent(this, CadastroActivity.class));
+    }
+
+    public void exibirCadastrados(View view){
+
+        startActivity(new Intent(this, ListaPessoasActivity.class));
     }
 
 }
