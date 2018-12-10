@@ -1,18 +1,22 @@
-package com.curso.ce.sistemacadastralpessoafisica.activity.activity.activity;
+package com.ifsp.cadastropessoa.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.widget.TextView;
 
-import com.curso.ce.sistemacadastralpessoafisica.R;
+import com.ifsp.cadastropessoa.R;
 
 public class PrincipalActivity extends AppCompatActivity {
-
+    private TextView anim;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+
+
     }
 
     public void abrirTelaCadastro(View view){

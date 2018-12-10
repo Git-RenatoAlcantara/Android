@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.curso.ce.sistemacadastralpessoafisica">
+    package="com.ifsp.cadastropessoa">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.activity.activity.PrincipalActivity"
+            android:name=".activity.PrincipalActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,9 +19,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.activity.activity.CadastroActivity"
+            android:name=".activity.CadastroActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.activity.activity.ListaPessoasActivity" />
+        <activity android:name=".activity.ListaPessoasActivity" />
     </application>
 
 </manifest>

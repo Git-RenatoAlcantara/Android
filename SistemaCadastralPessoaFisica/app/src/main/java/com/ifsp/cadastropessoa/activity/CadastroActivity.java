@@ -1,6 +1,5 @@
-package com.curso.ce.sistemacadastralpessoafisica.activity.activity.activity;
+package com.ifsp.cadastropessoa.activity;
 
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,11 +8,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.curso.ce.sistemacadastralpessoafisica.R;
-import com.curso.ce.sistemacadastralpessoafisica.activity.activity.modal.Pessoa;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.ifsp.cadastropessoa.R;
+import com.ifsp.cadastropessoa.modal.Pessoa;
 
 public class CadastroActivity extends AppCompatActivity {
 
@@ -42,6 +38,7 @@ public class CadastroActivity extends AppCompatActivity {
 
     }
     public void validarCampos(View view){
+
         String nome = campoNome.getText().toString();
         String cpf = campoCpf.getText().toString();
         String idade = campoIdade.getText().toString();

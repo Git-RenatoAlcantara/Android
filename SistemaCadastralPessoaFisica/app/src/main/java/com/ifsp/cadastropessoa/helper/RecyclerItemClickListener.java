@@ -1,4 +1,4 @@
-package com.curso.ce.sistemacadastralpessoafisica.activity.activity.helper;
+package com.ifsp.cadastropessoa.helper;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

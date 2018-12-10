@@ -1,9 +1,10 @@
-package com.curso.ce.sistemacadastralpessoafisica.activity.activity.activity;
+package com.ifsp.cadastropessoa.activity;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,20 +17,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.curso.ce.sistemacadastralpessoafisica.R;
-import com.curso.ce.sistemacadastralpessoafisica.activity.activity.adapter.AdapterPessoa;
-import com.curso.ce.sistemacadastralpessoafisica.activity.activity.helper.RecyclerItemClickListener;
-import com.curso.ce.sistemacadastralpessoafisica.activity.activity.modal.Pessoa;
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetView;
+import com.ifsp.cadastropessoa.R;
+import com.ifsp.cadastropessoa.adapter.AdapterPessoa;
+import com.ifsp.cadastropessoa.helper.RecyclerItemClickListener;
+import com.ifsp.cadastropessoa.modal.Pessoa;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class ListaPessoasActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -37,6 +37,7 @@ public class ListaPessoasActivity extends AppCompatActivity {
     private MaterialSearchView searchView;
     private Toolbar toolbar;
     private TextView setaVoltar;
+    private TextView target;
     Pessoa pessoa;
 
     //Lista de objetos Pessoa
@@ -51,7 +52,7 @@ public class ListaPessoasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_pessoas);
 
-
+        tapTarget();
 
 
         inicializarComponetes();
@@ -127,6 +128,7 @@ public class ListaPessoasActivity extends AppCompatActivity {
         searchView = findViewById(R.id.search_view);
         toolbar = findViewById(R.id.toolbar);
         setaVoltar = findViewById(R.id.setaVoltar);
+        target = findViewById(R.id.target);
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         pesquisarCadastrados();
@@ -333,5 +335,33 @@ public class ListaPessoasActivity extends AppCompatActivity {
 
     public void voltar(View view){
         finish();
+    }
+
+    private void tapTarget(){
+        TapTargetView.showFor(this,                 // `this` is an Activity
+                TapTarget.forView(findViewById(R.id.layouttTarget), "Arrastar para Excluir", "Para excluir um cadatro mova-o para o lado, clique e sim e pronto.")
+                        // All options below are optional
+                        .outerCircleColor(R.color.colorAccent)      // Specify a color for the outer circle
+                        .outerCircleAlpha(0.96f)            // Specify the alpha amount for the outer circle
+                        .targetCircleColor(R.color.colorWhite)   // Specify a color for the target circle
+                        .titleTextSize(20)                  // Specify the size (in sp) of the title text
+                        .titleTextColor(R.color.colorWhite)      // Specify the color of the title text
+                        .descriptionTextSize(10)            // Specify the size (in sp) of the description text
+                        .descriptionTextColor(R.color.colorAccent)  // Specify the color of the description text
+                        .textColor(R.color.colorBlack)            // Specify a color for both the title and description text
+                        .textTypeface(Typeface.SANS_SERIF)  // Specify a typeface for the text
+                        .dimColor(R.color.colorBlack)            // If set, will dim behind the view with 30% opacity of the given color
+                        .drawShadow(true)                   // Whether to draw a drop shadow or not
+                        .cancelable(false)                  // Whether tapping outside the outer circle dismisses the view
+                        .tintTarget(true)                   // Whether to tint the target view's color
+                        .transparentTarget(false)           // Specify whether the target is transparent (displays the content underneath)
+                        .targetRadius(60),                  // Specify the target radius (in dp)
+                new TapTargetView.Listener() {          // The listener can listen for regular clicks, long clicks or cancels
+                    @Override
+                    public void onTargetClick(TapTargetView view) {
+                        super.onTargetClick(view);      // This call is optional
+                        target.setVisibility(view.INVISIBLE);
+                    }
+                });
     }
 }

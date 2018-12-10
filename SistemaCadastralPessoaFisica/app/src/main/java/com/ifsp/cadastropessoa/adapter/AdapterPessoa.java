@@ -1,4 +1,4 @@
-package com.curso.ce.sistemacadastralpessoafisica.activity.activity.adapter;
+package com.ifsp.cadastropessoa.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -6,13 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.curso.ce.sistemacadastralpessoafisica.R;
-import com.curso.ce.sistemacadastralpessoafisica.activity.activity.modal.Pessoa;
+import com.ifsp.cadastropessoa.R;
+import com.ifsp.cadastropessoa.modal.Pessoa;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterPessoa extends RecyclerView.Adapter<AdapterPessoa.myViewHoder> {

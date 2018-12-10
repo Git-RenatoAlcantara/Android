@@ -1,4 +1,4 @@
-package com.curso.ce.sistemacadastralpessoafisica.activity.activity.modal;
+package com.ifsp.cadastropessoa.modal;
 
 import java.util.ArrayList;
 import java.util.List;
