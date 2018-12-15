@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#636e72</color>
+    <color name="colorPrimaryDark">#2d3436</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="colorAtrasado">#ff7675</color>
+
+    <color name="colorPainel">#0984e3</color>
+    <color name="color_adapter_horario">#b2bec3</color>
+    <color name="bg_formulario">#a8dedede</color>
+    <color name="bg_layout_button">#03bc2e</color>
+
+</resources>
