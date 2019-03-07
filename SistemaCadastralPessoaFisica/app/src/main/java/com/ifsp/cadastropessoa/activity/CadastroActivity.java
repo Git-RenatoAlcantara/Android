@@ -124,11 +124,13 @@ public class CadastroActivity extends AppCompatActivity {
 
     //Metodo para limpar campo
     private void limparCampos(){
+
        campoNome.setText("");
        campoCpf.setText("");
        campoIdade.setText("");
        campoTelefone.setText("");
        campoEmail.setText("");
+
     }
 
     //Carrar valores da activity
