@@ -1,5 +1,5 @@
 
-# Projeto Curso Emprego
+# Projeto Curso Emprego  <font color="red">em andamento</font>
 
 > Projeto feito para um blog de cursos utilizando __RETROFIT__ e __GSON__ para consumir __API__ e parsear.
 
