@@ -1,4 +1,7 @@
-# Android
-Projetos android
-Novo
-<embed src="https://appetize.io/embed/82rn8qy2db2560an5b52uegpfc?device=nexus5&scale=75&orientation=portrait&osVersion=7.1">
+__1. Classes de Suporte / Layout__ </br>
+
+ 
+__2. Projetos Finalizados / Terminar__ </br>
+  * [Alcool Ou Gasolina](https://github.com/Git-RenatoAlcantara/Android/tree/master/AlcoolOuGasolina)
+  * [Curso Emprego](https://github.com/Git-RenatoAlcantara/Android/tree/master/CursoEmprego)
+  * [Sistema Cadastral](https://github.com/Git-RenatoAlcantara/Android/tree/master/SistemaCadastralPessoaFisica)
