@@ -9,4 +9,4 @@ __2. Projetos Finalizados / Terminar__ </br>
   * [Sistema Cadastral](https://github.com/Git-RenatoAlcantara/Android/tree/master/SistemaCadastralPessoaFisica)
   
   >Sistema de Controle das despesas e receitas.
-  * [Sistema Cadastral](https://github.com/Git-RenatoAlcantara/Android/tree/master/Organize)
+  * [Organize](https://github.com/Git-RenatoAlcantara/Android/tree/master/Organize)
